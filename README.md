@@ -24,7 +24,7 @@ or use IntelliJ’s Maven Tool Window → Lifecycle → clean, install.
 
 Then run the main class:
 
-[ProductManagementApplication.java](src/main/java/com/org.example/ProductManagementApplication.java)
+[ProductManagementApplication.java](src/main/java/org/example/ProductManagementApplication.java)
 
 
 You’re good to go 🚀
