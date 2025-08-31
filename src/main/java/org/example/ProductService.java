@@ -1,34 +1,38 @@
 package org.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
-
+@Component
 public class ProductService {
 
-    ProductDB productDB = new ProductDB();
+    @Autowired
+    ProductDB db;
 
     public void addProduct(Product p) {
-        productDB.addProduct(p);
+        db.save(p);
     }
 
     public List<Product> getAllProduct() {
-        return productDB.getAllProducts();
+        return db.findAll();
     }
 
     public Product getProductByName(String s) {
-        return productDB.productByName(s);
+        return db.findProductByName(s);
     }
 
     public List<Product> getProductByText(String s) {
-        return productDB.productByText(s);
+        return db.findByNameContainingIgnoreCaseOrTypeContainingIgnoreCaseOrPlaceContainingIgnoreCase(s, s, s);
     }
 
 
-    public List<Product> getProductWithPlace(String s) {
-        return productDB.productByPlace(s);
+    public List<Product> getProductWithPlace(String place) {
+        return db.findByPlaceIgnoreCase(place);
     }
 
     public List<Product> getProductOutOfWarranty(int year) {
-        return productDB.productsOutOfWarranty(year);
+        return db.findOutOfWarranty(year);
     }
 }

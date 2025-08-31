@@ -1,6 +1,14 @@
 package org.example;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "products", schema = "subham")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int pid;
     private String name;
     private String type;
     private String place;
@@ -16,39 +24,50 @@ public class Product {
         this.warranty = warranty;
     }
 
-    public String getName() {
-        return this.name;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "pid=" + pid +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", place='" + place + '\'' +
+                ", warranty=" + warranty +
+                '}';
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getType() {
-        return this.type;
-    }
-
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getPlace() {
-        return this.place;
     }
 
     public void setPlace(String place) {
         this.place = place;
     }
 
-    public int getWarranty() {
-        return this.warranty;
-    }
-
     public void setWarranty(int warranty) {
         this.warranty = warranty;
     }
 
-    public String toString() {
-        return "Product{name='" + this.name + "', type='" + this.type + "', place='" + this.place + "', warranty=" + this.warranty + "}";
+    public int getPid() {
+        return pid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public int getWarranty() {
+        return warranty;
     }
 }
